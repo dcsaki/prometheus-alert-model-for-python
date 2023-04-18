@@ -3,10 +3,9 @@
 
 from datetime import datetime
 from re import Pattern, compile
-from typing import Dict, List, Optional, Sequence, Union
+from typing import Dict, List, Literal, Optional, Sequence, Union
 
 from pydantic import BaseModel, Field, validator
-from typing_extensions import Literal
 
 from .utils import intersect
 

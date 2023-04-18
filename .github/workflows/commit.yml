@@ -9,19 +9,19 @@ jobs:
 
     strategy:
       matrix:
-        python-version: [3.8, 3.9]
+        python-version: [3.11]
 
     steps:
 
     # ==========================================================================
 
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v3
 
-    - uses: actions/setup-python@v2
+    - uses: actions/setup-python@v4
       with:
         python-version: ${{ matrix.python-version }}
 
-    - uses: Gr1N/setup-poetry@v4
+    - uses: Gr1N/setup-poetry@v8
 
     - name: Use cache
       uses: actions/cache@v1
@@ -37,10 +37,10 @@ jobs:
 
     - run: bash run.sh test
 
-    - uses: codecov/codecov-action@v1
-      if: matrix.python-version == 3.9
+    - uses: codecov/codecov-action@v3
+      if: matrix.python-version == 3.11
       with:
-        file: ./coverage.xml
+        files: ./coverage.xml
         flags: unittests
         env_vars: OS,PYTHON
         name: codecov-umbrella
@@ -49,25 +49,25 @@ jobs:
     # ==========================================================================
 
     - run: bash run.sh lint
-      if: matrix.python-version == 3.9
+      if: matrix.python-version == 3.11
 
     - run: bash run.sh requirements
-      if: matrix.python-version == 3.9
+      if: matrix.python-version == 3.11
 
     - run: bash run.sh format
-      if: matrix.python-version == 3.9
+      if: matrix.python-version == 3.11
 
     - run: bash run.sh docs
-      if: matrix.python-version == 3.9
+      if: matrix.python-version == 3.11
 
     # ==========================================================================
 
-    - uses: EndBug/add-and-commit@v5
-      if: matrix.python-version == 3.9
-      with:
-        message: 'ci: Apply automatic changes [skip ci]'
-        signoff: true
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#    - uses: EndBug/add-and-commit@v9
+#      if: matrix.python-version == 3.11
+#      with:
+#        message: 'ci: Apply automatic changes [skip ci]'
+#        signoff: true
+#      env:
+#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     # ==========================================================================
