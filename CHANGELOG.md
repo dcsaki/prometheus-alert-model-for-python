@@ -11,6 +11,13 @@ specification.
 
 * Nothing
 
+## [1.0.1] 2023-04-18
+
+### Added
+
+- Python 3.11, drop support from previous version
+- Use Literal directly from python typing
+
 ## [1.0.0] 2020-12-05
 
 ### Added

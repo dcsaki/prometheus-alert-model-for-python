@@ -31,10 +31,9 @@
 
 from datetime import datetime
 from re import Pattern, compile
-from typing import Dict, List, Optional, Sequence, Union
+from typing import Dict, List, Optional, Sequence, Union, Literal
 
 from pydantic import BaseModel, Field, validator
-from typing_extensions import Literal
 
 from .utils import intersect
 
@@ -795,7 +794,9 @@ class AlertGroup(BaseModel):
                             prefix + alert.__dict__[target][name]
                         )
 
-            self.update_specific_elements(list(targets.keys()))</code></pre>
+            self.update_specific_elements(list(targets.keys()))
+
+    # --------------------------------------------------------------------------</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">

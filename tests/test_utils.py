@@ -70,25 +70,22 @@ def test_intersect_multiple_v3():
 
 
 def test_intersect_multiple_v4():
-    assert (
-        intersect(
-            [
-                {
-                    "a": "a",
-                    "b": "b",
-                },
-                {
-                    "a": "a",
-                    "b": "b",
-                },
-                {
-                    "a": "a",
-                },
-                {
-                    "a": "a",
-                    "b": "c",
-                },
-            ]
-        )
-        == {"a": "a"}
-    )
+    assert intersect(
+        [
+            {
+                "a": "a",
+                "b": "b",
+            },
+            {
+                "a": "a",
+                "b": "b",
+            },
+            {
+                "a": "a",
+            },
+            {
+                "a": "a",
+                "b": "c",
+            },
+        ]
+    ) == {"a": "a"}
